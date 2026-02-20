@@ -88,17 +88,28 @@ body{
   place-items:center;
 }
 
+/* ✅ LOGO FIX: show full logo (no crop) */
 .heroLogo img{
-  width:210px;
-  height:210px;
-  border-radius:36px;
-  object-fit:cover;
-  border:1px solid rgba(212,175,55,.35);
+  width: 220px;
+  height: 220px;
+
+  /* IMPORTANT */
+  object-fit: contain;      /* shows full logo */
+  object-position: center;
+  padding: 18px;            /* space around logo text */
+  background: rgba(0,0,0,.35);  /* premium base behind logo */
+  
+  border-radius: 38px;
+  border: 1px solid rgba(212,175,55,.35);
+
   box-shadow:
-    0 0 60px rgba(212,175,55,.60),
-    0 0 160px rgba(212,175,55,.25),
-    0 0 260px rgba(212,175,55,.12);
-  animation: pop 1.2s cubic-bezier(.2,.8,.2,1) both;
+    0 0 60px rgba(212,175,55,.55),
+    0 0 160px rgba(212,175,55,.22),
+    0 0 260px rgba(212,175,55,.10);
+
+  /* keep your animation */
+  transform-style: preserve-3d;
+  animation: pop 1.2s cubic-bezier(.2,.8,.2,1) both, float3d 4.8s ease-in-out infinite;
 }
 
 .halo{ inset:15px; }
