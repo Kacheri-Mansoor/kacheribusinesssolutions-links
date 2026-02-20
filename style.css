@@ -339,3 +339,109 @@ body{
 .location a:hover{
   opacity:.75;
 }
+/* ===== Since 2024 Badge ===== */
+.sinceBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(212,175,55,.35);
+  background: rgba(212,175,55,.10);
+  color: rgba(255,255,255,.95);
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  box-shadow: 0 0 22px rgba(212,175,55,.14);
+  margin: 0 auto 10px;
+}
+
+/* ===== Location + Animated Gold Line ===== */
+.location{
+  margin-top:10px;
+  font-size:13px;
+  color: rgba(245,245,245,.85);
+  line-height:1.5;
+  position:relative;
+  padding-bottom:14px;
+}
+
+.location::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:0;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,.75), transparent);
+  filter: drop-shadow(0 0 10px rgba(212,175,55,.35));
+  animation: goldLine 2.4s ease-in-out infinite;
+  opacity:.95;
+}
+
+@keyframes goldLine{
+  0%,100%{ width: 140px; opacity:.7; }
+  50%{ width: 210px; opacity:1; }
+}
+
+/* ===== Maps Row ===== */
+.mapRow{
+  margin-top:6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
+.mapLink{
+  color: var(--gold);
+  text-decoration:none;
+  font-weight:800;
+  transition: opacity .2s ease;
+}
+.mapLink:hover{ opacity:.75; }
+
+.mapIconBtn{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  border:1px solid rgba(212,175,55,.35);
+  background: rgba(212,175,55,.10);
+  text-decoration:none;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+.mapIconBtn:hover{
+  transform: translateY(-2px) scale(1.03);
+  border-color: rgba(212,175,55,.55);
+  background: rgba(212,175,55,.16);
+}
+
+/* ===== Subtle 3D Floating Logo ===== */
+.heroLogo{
+  perspective: 900px;
+}
+
+.heroLogo img{
+  transform-style: preserve-3d;
+  animation: pop 1.2s cubic-bezier(.2,.8,.2,1) both, float3d 4.8s ease-in-out infinite;
+}
+
+@keyframes float3d{
+  0%,100%{ transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+  50%{ transform: translateY(-8px) rotateX(3deg) rotateY(-3deg); }
+}
+
+/* Make rings move subtly with logo */
+.halo, .halo2{
+  animation: pulse 2.9s ease-in-out infinite, ringFloat 4.8s ease-in-out infinite;
+}
+
+@keyframes ringFloat{
+  0%,100%{ transform: translateY(0) scale(1); }
+  50%{ transform: translateY(-6px) scale(1.03); }
+}
