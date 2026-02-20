@@ -321,3 +321,21 @@ body{
 @media (prefers-reduced-motion: reduce){
   *{ animation:none !important; transition:none !important; }
 }
+/* ===== Location Style ===== */
+.location{
+  margin-top:10px;
+  font-size:13px;
+  color: rgba(245,245,245,.85);
+  line-height:1.5;
+}
+
+.location a{
+  color: var(--gold);
+  text-decoration:none;
+  font-weight:700;
+  transition: opacity .2s ease;
+}
+
+.location a:hover{
+  opacity:.75;
+}
