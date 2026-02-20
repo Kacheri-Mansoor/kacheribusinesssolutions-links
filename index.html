@@ -1,121 +1,321 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kacheri Business Solutions — Links</title>
-  <meta name="description" content="Kacheri Business Solutions — Photocopier Rentals & Investor Model" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Kacheri Business Solutions</title>
+
+<style>
+:root{
+  --bg:#050505;
+  --card:#0c0c0c;
+  --text:#f5f5f5;
+  --muted:#bdbdbd;
+  --gold:#d4af37;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Layout */
+.wrap{
+  display:flex;
+  justify-content:center;
+  padding:30px 15px;
+}
+
+.card{
+  width:600px;
+  max-width:100%;
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(0,0,0,.6));
+  border:1px solid rgba(212,175,55,.2);
+  border-radius:25px;
+  padding:30px 25px;
+  box-shadow:0 25px 80px rgba(0,0,0,.7);
+}
+
+/* LOGO */
+.heroLogo{
+  display:flex;
+  justify-content:center;
+  margin-bottom:15px;
+}
+
+.heroLogo img{
+  width:420px;
+  max-width:100%;
+  height:auto;
+  filter:drop-shadow(0 0 35px rgba(212,175,55,.45))
+         drop-shadow(0 0 90px rgba(212,175,55,.20));
+  animation:floatLogo 5s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+
+.title{
+  text-align:center;
+  font-size:26px;
+  margin:5px 0;
+}
+
+.sinceBadge{
+  text-align:center;
+  margin:5px auto 10px;
+  padding:6px 14px;
+  border-radius:999px;
+  border:1px solid rgba(212,175,55,.4);
+  background:rgba(212,175,55,.12);
+  font-size:12px;
+  font-weight:700;
+  display:inline-block;
+}
+
+.model{
+  text-align:center;
+  font-size:14px;
+  line-height:1.6;
+  margin-bottom:10px;
+}
+
+.location{
+  text-align:center;
+  font-size:13px;
+  margin-bottom:15px;
+  position:relative;
+  padding-bottom:10px;
+}
+
+.location::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:0;
+  width:150px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  animation:linePulse 2s ease-in-out infinite;
+}
+
+@keyframes linePulse{
+  0%,100%{width:120px}
+  50%{width:200px}
+}
+
+/* MAP */
+.officeSection{
+  margin-top:20px;
+  padding:18px;
+  border-radius:20px;
+  border:1px solid rgba(212,175,55,.2);
+  background:rgba(255,255,255,.04);
+}
+
+.mapContainer{
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  margin-bottom:15px;
+  animation:mapFloat 5s ease-in-out infinite;
+}
+
+@keyframes mapFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+
+.mapContainer::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border:1px solid rgba(212,175,55,.35);
+  border-radius:20px;
+  box-shadow:0 0 25px rgba(212,175,55,.3);
+  pointer-events:none;
+}
+
+.mapContainer iframe{
+  width:100%;
+  height:320px;
+  border:0;
+}
+
+/* PIN */
+.pinRow{
+  display:flex;
+  justify-content:center;
+  margin-bottom:10px;
+}
+
+.pinDot{
+  width:12px;
+  height:12px;
+  background:red;
+  border-radius:50%;
+  box-shadow:0 0 15px red;
+  position:relative;
+}
+
+.pinDot::after{
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  border:1px solid red;
+  animation:pinPulse 1.5s infinite;
+}
+
+@keyframes pinPulse{
+  0%{transform:scale(1);opacity:1}
+  100%{transform:scale(3);opacity:0}
+}
+
+/* BUTTON */
+.directionBtn{
+  display:block;
+  text-align:center;
+  padding:15px;
+  border-radius:999px;
+  font-weight:700;
+  background:linear-gradient(90deg,#caa431,#e2c15a);
+  color:#000;
+  text-decoration:none;
+  animation:btnPulse 2.5s infinite;
+}
+
+@keyframes btnPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.02)}
+}
+
+/* LINKS */
+.links{
+  margin-top:20px;
+  display:grid;
+  gap:10px;
+}
+
+.btn{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px;
+  border-radius:15px;
+  border:1px solid rgba(212,175,55,.2);
+  text-decoration:none;
+  color:#fff;
+  background:rgba(255,255,255,.05);
+}
+
+/* TEAM */
+.teamGrid{
+  margin-top:20px;
+  display:grid;
+  gap:10px;
+}
+
+.member{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px;
+  border-radius:15px;
+  border:1px solid rgba(212,175,55,.2);
+  background:rgba(255,255,255,.05);
+}
+
+.member img{
+  width:55px;
+  height:55px;
+  border-radius:12px;
+  object-fit:cover;
+  margin-right:10px;
+}
+
+.memberInfo{
+  flex:1;
+}
+
+.wBtn{
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(212,175,55,.15);
+  border:1px solid rgba(212,175,55,.3);
+  text-decoration:none;
+  color:#fff;
+  font-size:12px;
+}
+</style>
 </head>
 
 <body>
-  <!-- Premium background -->
-  <div class="bg" aria-hidden="true">
-    <span class="blob b1"></span>
-    <span class="blob b2"></span>
-    <span class="blob b3"></span>
-    <div class="noise"></div>
-  </div>
 
-  <main class="wrap">
-    <section class="card" aria-label="Kacheri Business Solutions Link Page">
+<div class="wrap">
+<div class="card">
 
-      <!-- ===== BIG LOGO TOP ===== -->
-      <header class="top">
-        <div class="heroLogo">
-          <span class="halo"></span>
-          <span class="halo2"></span>
-         <img src="kacheri-business-solutions-logo.png" alt="Kacheri Business Solutions Logo" />
-          <span class="spark s1"></span>
-          <span class="spark s2"></span>
-          <span class="spark s3"></span>
-        </div>
-
-        <h1 class="title">Kacheri Business Solutions</h1>
-        <div class="sinceBadge">Since 2024</div>
-
-        <!-- Short business model text (as requested) -->
-        <p class="model">
-          We install <b>photocopier machines at corporate offices</b> and collect monthly rental.
-          Investors earn a <b>fixed monthly payout</b> backed by a real machine asset.
-        </p>
-      </header>
-     <div class="location">
-  📍 Housing Board Colony, Opp. Canara Bank, Anantapur, Andhra Pradesh  
-  <div class="mapRow">
-    <a class="mapLink" href="https://maps.app.goo.gl/kHYgQiRbxSKHFQXDA" target="_blank" rel="noreferrer">
-      View on Google Maps
-    </a>
-
-    <a class="mapIconBtn" href="https://maps.app.goo.gl/kHYgQiRbxSKHFQXDA" target="_blank" rel="noreferrer" aria-label="Open Google Maps">
-      🗺️
-    </a>
-  </div>
+<div class="heroLogo">
+<img src="kacheri-business-solutions-logo.png" alt="Kacheri Business Solutions Logo">
 </div>
 
-      <!-- ===== LINKS ===== -->
-      <div class="sectionTitle">Links</div>
+<h1 class="title">Kacheri Business Solutions</h1>
+<div class="sinceBadge">Since 2024</div>
 
-      <div class="links" aria-label="Links">
-        <a class="btn" href="https://kacheribusinesssolutions.com" target="_blank" rel="noreferrer">
-          <span class="ic">🌐</span><span class="tx">Website</span><span class="arr">→</span>
-        </a>
+<p class="model">
+We install <b>photocopier machines at corporate offices</b> and collect rental.
+Investors receive <b>fixed monthly returns</b> backed by real machine assets.
+</p>
 
-        <a class="btn" href="mailto:info@kacheribusinesssolutions.com">
-          <span class="ic">✉️</span><span class="tx">Email</span><span class="arr">→</span>
-        </a>
+<div class="location">
+📍 Housing Board Colony, Opp. Canara Bank, Anantapur, Andhra Pradesh
+</div>
 
-        <!-- Change if your Instagram handle is different -->
-      <a class="btn" href="https://instagram.com/kacheri.co" target="_blank" rel="noreferrer">
-  <span class="ic">📸</span><span class="tx">Instagram</span><span class="arr">→</span>
+<div class="officeSection">
+<div class="mapContainer">
+<iframe src="https://www.google.com/maps?q=Housing+Board+Colony,+Anantapur&output=embed"></iframe>
+</div>
+
+<div class="pinRow"><div class="pinDot"></div></div>
+
+<a class="directionBtn" href="https://maps.app.goo.gl/kHYgQiRbxSKHFQXDA" target="_blank">
+📍 Get Directions on Google Maps
 </a>
+</div>
 
-      <!-- ===== TEAM CONTACTS (WITH PHOTOS) ===== -->
-      <div class="sectionTitle">Direct WhatsApp Contacts</div>
+<div class="links">
+<a class="btn" href="https://kacheribusinesssolutions.com">Website →</a>
+<a class="btn" href="mailto:info@kacheribusinesssolutions.com">Email →</a>
+<a class="btn" href="https://instagram.com/kacheri.co">Instagram →</a>
+</div>
 
-      <div class="teamGrid">
-        <!-- CEO -->
-        <div class="member">
-          <div class="miniPhoto">
-            <img src="ceo.jpg" alt="Kacheri Mansoor Ahamed - CEO">
-            <span class="miniGlow"></span>
-          </div>
-          <div class="mInfo">
-            <div class="mName">Kacheri Mansoor Ahamed</div>
-            <div class="mRole">CEO</div>
-          </div>
-          <a class="wBtn" href="https://wa.me/918247892087" target="_blank" rel="noreferrer">
-            WhatsApp CEO
-            <span class="wArr">→</span>
-          </a>
-        </div>
+<div class="teamGrid">
+<div class="member">
+<img src="ceo.jpg">
+<div class="memberInfo">
+<b>Kacheri Mansoor Ahamed</b><br>CEO
+</div>
+<a class="wBtn" href="https://wa.me/918247892087">WhatsApp</a>
+</div>
 
-        <!-- OPS -->
-        <div class="member">
-          <div class="miniPhoto">
-            <img src="ops.jpg" alt="Kacheri Inayath Ali - OPS">
-            <span class="miniGlow"></span>
-          </div>
-          <div class="mInfo">
-            <div class="mName">Kacheri Inayath Ali</div>
-            <div class="mRole">OPS</div>
-          </div>
-          <a class="wBtn" href="https://wa.me/916300896212" target="_blank" rel="noreferrer">
-            WhatsApp OPS
-            <span class="wArr">→</span>
-          </a>
-        </div>
-      </div>
+<div class="member">
+<img src="ops.jpg">
+<div class="memberInfo">
+<b>Kacheri Inayath Ali</b><br>OPS
+</div>
+<a class="wBtn" href="https://wa.me/916300896212">WhatsApp</a>
+</div>
+</div>
 
-      <footer class="foot">
-        <div class="line"></div>
-        <p>© <span id="y"></span> Kacheri Business Solutions</p>
-      </footer>
-    </section>
-  </main>
+</div>
+</div>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
