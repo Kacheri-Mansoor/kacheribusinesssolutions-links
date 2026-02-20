@@ -79,13 +79,39 @@ body{
 
 /* ===== BIG LOGO + GLOW ===== */
 /* ===== BIGGER PREMIUM LOGO ===== */
+/* ===== PERFECT SIZE FOR HORIZONTAL LOGO ===== */
+
 .heroLogo{
-  width:260px;
-  height:260px;
-  margin:10px auto 20px;
-  position:relative;
-  display:grid;
-  place-items:center;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  margin:20px 0 15px;
+  perspective: 1000px;
+}
+
+.heroLogo img{
+  width: 420px;          /* Main size */
+  max-width: 95%;        /* Responsive */
+  height: auto;          /* Keep ratio */
+
+  object-fit: contain;
+  display:block;
+
+  /* Remove square feeling */
+  border-radius: 0px;    
+
+  /* Premium glow */
+  filter: drop-shadow(0 0 35px rgba(212,175,55,.45))
+          drop-shadow(0 0 90px rgba(212,175,55,.20));
+
+  transform-style: preserve-3d;
+  animation: float3d 5s ease-in-out infinite;
+}
+
+/* Smooth floating motion */
+@keyframes float3d{
+  0%,100%{ transform: translateY(0px); }
+  50%{ transform: translateY(-10px); }
 }
 
 /* ✅ LOGO FIX: show full logo (no crop) */
